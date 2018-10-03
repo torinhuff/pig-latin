@@ -1,31 +1,32 @@
-/*for (allWords) {
-  if (isWord)(word)) {
-    var newWord = translateWord(word);
-    print(newWord);
-  } else {
-    displayError();
+
+function convertInput(string) {
+  var words = string.split(" ");
+  var newString = "";
+  for (var i = 0; i < words.length; i++) {
+    var word = words[i];
+    var newWord = convertPig(word);
+    newString = newString.concat(newWord + " ");
   }
+  return newString;
 };
 
-function nonWord(word) {
-  var vowelAll = ["a", "e", "i", "o", "u", "y"];
-  var vowelMinus = ["a", "e", "i", "o", "u"];
 
-  if (word)
-};*/
-
-function convertPig(word) {
-  if (isWord(word)) {
-    var newWord = translateWord(word);
-    return newWord;
-  } else {
-    return "Please enter a word"
+function convertPig(string) {
+  var words = string.split(" ");
+  for (var i = 0; i < words.length; i++) {
+    var word = words[i];
+    if (isWord(word)) {
+      var newWord = translateWord(word);
+      return newWord;
+    } else {
+      return "Please enter a word"
+    }
   }
 };
 
 function translateWord(word) {
   if(startsWithVowel(word)) {
-      return word + "way";
+      return word + "Way";
     } else if (startsWithTwoLetterCombo(word)) {
         var comboCapitalize = word.charAt(0).toUpperCase() + word.slice(1);
         var comboStart = comboCapitalize.slice(0, 2);
@@ -66,45 +67,10 @@ $(document).ready(function() {
   $("form#pig-latin-converter").submit(function(event) {
     event.preventDefault();
     var inputString = $("input#pig-latin").val();
-    var outputString = convertPig(inputString);
+    var outputString = convertInput(inputString);
 
     $(".pig-sentence").text(outputString);
     $("#result").show();
 
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-/*var sentence = "What is happening";
-var vowelAll = ["a", "e", "i", "o", "u", "y"];
-var vowelMinus = ["a", "e", "i", "o", "u"];
-
-var nonWord = function(word) {
-  if (!sentence.includes(vowelAll)) {
-    return false;
-  } else {
-    return true;
-  }
-};
-
-var includeVowel = function(anyvowel) {
-  if ()
-
-}
-
-var vowelStart = function(vow) {
-  if (sentence.startsWith(vowelMinus)) {
-    alert("starts with 'i'");
-  }
-
-}*/
