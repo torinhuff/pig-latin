@@ -27,11 +27,12 @@ function translateWord(word) {
   if(startsWithVowel(word)) {
       return word + "way";
     } else if (startsWithTwoLetterCombo(word)) {
-        var comboStart = word.slice(0, 2);
-        var rest = word.slice(2);
+        var comboCapitalize = word.charAt(0).toUpperCase() + word.slice(1);
+        var comboStart = comboCapitalize.slice(0, 2);
+        var rest = comboCapitalize.slice(2);
         return rest + comboStart + "ay";
     } else {
-        var firstLetter = word.slice(0, 1);
+        var firstLetter = word.slice(0, 1).toUpperCase();
         var rest = word.slice(1);
         return rest + firstLetter + "ay";
     }
@@ -48,7 +49,7 @@ function startsWithVowel(word) {
 };
 
 function startsWithTwoLetterCombo(word) {
-  var combos = ["qu", "ch", "sh", "th", "gh", "sh", "st"];
+  var combos = ["qu", "ch", "sh", "th", "gh", "sh", "st", "tr"];
   for (var index = 0; index < combos.length; index++) {
     if(word.startsWith(combos[index])) {
       return true;
