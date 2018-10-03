@@ -24,9 +24,23 @@ function convertPig(word) {
 };
 
 function translateWord(word) {
-  var firstLetter = word.slice(0, 1);
-  var rest = word.slice(1);
-  return rest + firstLetter + "ay";
+  if(startsWithVowel(word)) {
+      return word + "way";
+    } else {
+      var firstLetter = word.slice(0, 1);
+      var rest = word.slice(1);
+      return rest + firstLetter + "ay";
+    }
+};
+
+function startsWithVowel(word) {
+  var vowelMinus = ["a", "e", "i", "o", "u"];
+  for (var index = 0; index < vowelMinus.length; index++) {
+    if(word.startsWith(vowelMinus[index])) {
+      return true;
+    }
+  }
+  return false;
 };
 
 function isWord(word) {
