@@ -26,10 +26,14 @@ function convertPig(word) {
 function translateWord(word) {
   if(startsWithVowel(word)) {
       return word + "way";
+    } else if (startsWithTwoLetterCombo(word)) {
+        var comboStart = word.slice(0, 2);
+        var rest = word.slice(2);
+        return rest + comboStart + "ay";
     } else {
-      var firstLetter = word.slice(0, 1);
-      var rest = word.slice(1);
-      return rest + firstLetter + "ay";
+        var firstLetter = word.slice(0, 1);
+        var rest = word.slice(1);
+        return rest + firstLetter + "ay";
     }
 };
 
@@ -37,6 +41,16 @@ function startsWithVowel(word) {
   var vowelMinus = ["a", "e", "i", "o", "u"];
   for (var index = 0; index < vowelMinus.length; index++) {
     if(word.startsWith(vowelMinus[index])) {
+      return true;
+    }
+  }
+  return false;
+};
+
+function startsWithTwoLetterCombo(word) {
+  var combos = ["qu", "ch", "sh", "th", "gh", "sh", "st"];
+  for (var index = 0; index < combos.length; index++) {
+    if(word.startsWith(combos[index])) {
       return true;
     }
   }
