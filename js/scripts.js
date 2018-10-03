@@ -15,8 +15,23 @@ function nonWord(word) {
 };*/
 
 function convertPig(word) {
-  return word;
-}
+  if (isWord(word)) {
+    var newWord = translateWord(word);
+    return newWord;
+  } else {
+    return "Please enter a word"
+  }
+};
+
+function translateWord(word) {
+  var firstLetter = word.slice(0, 1);
+  var rest = word.slice(1);
+  return rest + firstLetter + "ay";
+};
+
+function isWord(word) {
+  return true;
+};
 
 $(document).ready(function() {
   $("form#pig-latin-converter").submit(function(event) {
