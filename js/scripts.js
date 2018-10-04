@@ -1,3 +1,6 @@
+function isAlphabet(str) {
+  return /^[a-zA-Z()]/.test(str);
+}
 
 function convertInput(string) {
   var words = string.split(" ");
@@ -40,7 +43,7 @@ function translateWord(word) {
 };
 
 function startsWithVowel(word) {
-  var vowelMinus = ["a", "e", "i", "o", "u"];
+  var vowelMinus = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
   for (var index = 0; index < vowelMinus.length; index++) {
     if(word.startsWith(vowelMinus[index])) {
       return true;
@@ -50,7 +53,7 @@ function startsWithVowel(word) {
 };
 
 function startsWithTwoLetterCombo(word) {
-  var combos = ["qu", "ch", "sh", "th", "gh", "sh", "st", "tr"];
+  var combos = ["qu", "ch", "sh", "th", "gh", "sh", "st", "tr", "ph", "Qu", "Ch", "Sh", "Th", "Gh", "Sh", "St", "Tr", "Ph"];
   for (var index = 0; index < combos.length; index++) {
     if(word.startsWith(combos[index])) {
       return true;
@@ -68,6 +71,8 @@ $(document).ready(function() {
     event.preventDefault();
     var inputString = $("input#pig-latin").val();
     var outputString = convertInput(inputString);
+
+    isAlphabet(inputString) ? inputString : alert("Please use letters");
 
     $(".pig-sentence").text(outputString);
     $("#result").show();
